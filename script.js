@@ -58,4 +58,30 @@ function handleMath(symbol){
     buffer = '0';
 }
 
-//function flushOperator()
+function flushOperator(intBuffer){
+    if(previusOperator === '+'){
+        runningResult += intBuffer;
+    } else if(previusOperator === '-'){
+        runningResult -= intBuffer;
+    } else if(previusOperator === '×'){
+        runningResult *= intBuffer;
+    } else if(previusOperator === '÷'){
+        runningResult /= intBuffer;
+    }
+}
+
+function handleNumber(numberString){
+    if(buffer === "0"){
+        buffer = numberString;
+    } else {
+        buffer += numberString;
+    }
+}
+
+function init(){
+    document.querySelector('.calc-buttons').addEventListener('click', function(event){
+        buttonClick(event.target.innerText);
+    })
+}
+
+init();
